@@ -1,4 +1,7 @@
-# API REST de Pokedex Spring Boot JPA 
+# API REST de Pokedex Spring Boot JPA
+
+Aplicación de ejemplo hecho con Spring Boot que sirve un API REST con los datos de la pokedex
+Los datos se cargan en el arranque de la aplicación a través de un fichero CSV 
 
 # Ejecución
 mvn spring-boot:run
