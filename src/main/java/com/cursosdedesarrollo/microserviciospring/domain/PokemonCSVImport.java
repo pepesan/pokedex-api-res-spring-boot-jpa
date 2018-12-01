@@ -20,9 +20,9 @@ public class PokemonCSVImport {
         try {
             CsvSchema bootstrapSchema = CsvSchema.emptySchema().withHeader();
             CsvMapper mapper = new CsvMapper();
-            File file = new ClassPathResource(filePath).getFile();
+            InputStream is = new ClassPathResource(filePath).getInputStream();
             MappingIterator<Pokemon> readValues =
-                    mapper.reader(Pokemon.class).with(bootstrapSchema).readValues(file);
+                    mapper.reader(Pokemon.class).with(bootstrapSchema).readValues(is);
             list=readValues.readAll();
 
         } catch (FileNotFoundException e) {
