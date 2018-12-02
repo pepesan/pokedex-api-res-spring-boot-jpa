@@ -22,7 +22,7 @@ public class PokemonCSVImport {
             CsvMapper mapper = new CsvMapper();
             InputStream is = new ClassPathResource(filePath).getInputStream();
             MappingIterator<Pokemon> readValues =
-                    mapper.reader(Pokemon.class).with(bootstrapSchema).readValues(is);
+                    mapper.readerWithSchemaFor(Pokemon.class).with(bootstrapSchema).readValues(is);
             list=readValues.readAll();
 
         } catch (FileNotFoundException e) {
