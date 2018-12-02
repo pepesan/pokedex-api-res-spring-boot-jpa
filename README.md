@@ -5,6 +5,7 @@ Los datos se cargan en el arranque de la aplicación a través de un fichero CSV
 
 # Ejecución
 mvn spring-boot:run
+
 # URL principal
 [http://localhost:8080](http://localhost:8080)
 
@@ -14,3 +15,7 @@ mvn spring-boot:run
 # ENDPoint Images
 http://localhost:8080/images/pokemon/{id}.png
 http://localhost:8080/images/pokemon/1.png](http://localhost:8080/images/pokemon/1.png)
+
+# Montaje de docker compose
+docker-compose up -d
+ 
