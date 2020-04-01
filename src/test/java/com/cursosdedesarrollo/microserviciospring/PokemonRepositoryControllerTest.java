@@ -10,7 +10,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static org.junit.Assert.assertEquals;
 
-public class PokemonServiceControllerTest extends PokemonRestControllerIntegrationTest {
+public class PokemonRepositoryControllerTest extends PokemonRestControllerIntegrationTest {
     @Override
     @Before
     public void setUp() {
