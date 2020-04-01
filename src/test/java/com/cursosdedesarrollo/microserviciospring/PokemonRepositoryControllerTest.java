@@ -26,7 +26,20 @@ public class PokemonRepositoryControllerTest extends PokemonRestControllerIntegr
         int status = mvcResult.getResponse().getStatus();
         assertEquals(200, status);
         String content = mvcResult.getResponse().getContentAsString();
-        // System.out.println(content);
+        System.out.println("Contenido: listado: " + content);
+        //Pokemon[] productlist = super.mapFromJson(content, Pokemon[].class);
+        //assertTrue(productlist.length > 0);
+    }
+    @Test
+    public void getPokemonById() throws Exception {
+        String uri = "/pokemons/1";
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get(uri)
+                .accept(MediaType.APPLICATION_JSON_VALUE)).andReturn();
+
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
+        String content = mvcResult.getResponse().getContentAsString();
+        System.out.println("Contenido: listado: " + content);
         //Pokemon[] productlist = super.mapFromJson(content, Pokemon[].class);
         //assertTrue(productlist.length > 0);
     }
@@ -43,7 +56,7 @@ public class PokemonRepositoryControllerTest extends PokemonRestControllerIntegr
         int status = mvcResult.getResponse().getStatus();
         assertEquals(201, status);
         String content = mvcResult.getResponse().getContentAsString();
-        // System.out.println(content);
+        System.out.println("Contenido: create: " + content);
         //assertEquals(content, "Product is created successfully");
     }
     @Test
@@ -59,7 +72,7 @@ public class PokemonRepositoryControllerTest extends PokemonRestControllerIntegr
         int status = mvcResult.getResponse().getStatus();
         assertEquals(201, status);
         String content = mvcResult.getResponse().getContentAsString();
-        // System.out.println(content);
+        System.out.println("Contenido: update: " + content);
 
         uri = "/pokemons/2";
         pokemon = new Pokemon();
@@ -70,10 +83,10 @@ public class PokemonRepositoryControllerTest extends PokemonRestControllerIntegr
                 .content(inputJson)).andReturn();
 
         status = mvcResult.getResponse().getStatus();
-        System.out.println(status);
+        // System.out.println(status);
         //assertEquals(200, status);
         content = mvcResult.getResponse().getContentAsString();
-        // System.out.println(content);
+        System.out.println("Contenido: update 2: " + content);
         uri = "/pokemons/2";
         mvcResult = mvc.perform(MockMvcRequestBuilders.delete(uri)
                 .accept(MediaType.APPLICATION_JSON_VALUE)).andReturn();
@@ -81,7 +94,8 @@ public class PokemonRepositoryControllerTest extends PokemonRestControllerIntegr
         status = mvcResult.getResponse().getStatus();
         System.out.println(status);
         //assertEquals(200, status);
-        //(content, "Product is updated successsfully");
+        content = mvcResult.getResponse().getContentAsString();
+        System.out.println("Contenido: update: " + content);
     }
     @Test
     public void deleteProduct() throws Exception {
@@ -90,7 +104,7 @@ public class PokemonRepositoryControllerTest extends PokemonRestControllerIntegr
         int status = mvcResult.getResponse().getStatus();
         //assertEquals(200, status);
         String content = mvcResult.getResponse().getContentAsString();
-        System.out.println(content);
+        System.out.println("Contenido: delete: " +content);
         //assertEquals(content, "Product is deleted successsfully");
     }
 }
