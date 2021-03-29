@@ -22,7 +22,7 @@ pipeline { // define la pipeline
                   integration: {
                     sh "mvn integration-test"
                   }
-
+                 )
              }
          }
          stage('Deploy') {// fase de construcción
