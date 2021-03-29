@@ -1,7 +1,7 @@
 pipeline { // define la pipeline
      agent any // equipo a seleccionar para ejecutar los steps
      tools {
-             // Install the Maven version configured as "M3" and add it to the path.
+             // instala la versión de macen "3.6.1" y añadela al path.
              maven "3.6.1"
      }
      stages { // definición de fases
@@ -9,7 +9,7 @@ pipeline { // define la pipeline
              steps { // pasos
                 git 'https://github.com/pepesan/pokedex-api-res-spring-boot-jpa.git'
                 // Run Maven on a Unix agent.
-                sh "mvn -Dmaven.test.failure.ignore=true clean package"
+                sh "mvn -Dmaven.test.failure.ignore=true clean compile"
              }
          }
          stage('Test') {// fase de construcción
