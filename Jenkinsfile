@@ -14,8 +14,15 @@ pipeline { // define la pipeline
          }
          stage('Test') {// fase de construcción
              steps {// pasos
-                 // Run Maven on a Unix agent.
-                 sh "mvn test"
+                 parallel(
+                  unit: {
+                    // Run Maven on a Unix agent.
+                    sh "mvn test"
+                  },
+                  integration: {
+                    sh "mvn integration-test"
+                  }
+
              }
          }
          stage('Deploy') {// fase de construcción
