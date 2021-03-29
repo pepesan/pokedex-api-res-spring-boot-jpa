@@ -3,17 +3,17 @@ pipeline { // define la pipeline
      stages { // definición de fases
          stage('Build') { // fase de construcción
              steps { // pasos
-                echo 'Building..' // comando a ejecutar
+                mvn clean compile
              }
          }
          stage('Test') {// fase de construcción
              steps {// pasos
-                 echo 'Testing..'// comando a ejecutar
+                 mvn test
              }
          }
          stage('Deploy') {// fase de construcción
              steps {// pasos
-                echo 'Deploying....'// comando a ejecutar
+                mvn install
              }
          }
      }
