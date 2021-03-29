@@ -1,5 +1,9 @@
 pipeline { // define la pipeline
      agent any // equipo a seleccionar para ejecutar los steps
+     tools {
+             // Install the Maven version configured as "M3" and add it to the path.
+             maven "3.6.1"
+     }
      stages { // definición de fases
          stage('Build') { // fase de construcción
              steps { // pasos
