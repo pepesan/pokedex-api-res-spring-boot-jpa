@@ -3,17 +3,21 @@ pipeline { // define la pipeline
      stages { // definición de fases
          stage('Build') { // fase de construcción
              steps { // pasos
-                mvn clean compile
+                git 'https://github.com/pepesan/pokedex-api-res-spring-boot-jpa.git'
+                // Run Maven on a Unix agent.
+                sh "mvn -Dmaven.test.failure.ignore=true clean package"
              }
          }
          stage('Test') {// fase de construcción
              steps {// pasos
-                 mvn test
+                 // Run Maven on a Unix agent.
+                 sh "mvn test"
              }
          }
          stage('Deploy') {// fase de construcción
              steps {// pasos
-                mvn install
+                // Run Maven on a Unix agent.
+                sh "mvn install"
              }
          }
      }
