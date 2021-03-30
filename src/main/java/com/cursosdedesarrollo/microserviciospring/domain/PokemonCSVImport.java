@@ -28,10 +28,4 @@ public class PokemonCSVImport {
         }
         return list;
     }
-
-    public static void main(String[] args) {
-        PokemonCSVImport pi= new PokemonCSVImport();
-        List<Pokemon> list=pi.importCSV("pokemon.csv");
-        System.out.println(list);
-    }
 }
