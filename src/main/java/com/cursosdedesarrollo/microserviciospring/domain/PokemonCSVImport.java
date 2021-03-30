@@ -12,7 +12,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class PokemonCSVImport {
-    Logger logger = LoggerFactory.getLogger(PokemonCSVImport.class);
+    public Logger logger = LoggerFactory.getLogger(PokemonCSVImport.class);
     public List<Pokemon> importCSV(String filePath){
         List<Pokemon> list = new LinkedList<>();
         try {
