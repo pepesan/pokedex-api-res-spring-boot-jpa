@@ -16,8 +16,14 @@ import java.util.List;
 @SpringBootApplication
 public class MicroservicioSpringApplication extends SpringBootServletInitializer {
 
-    public static void main(String[] args) {
-        SpringApplication.run(MicroservicioSpringApplication.class, args);
+    public void main(String[] args) {
+        if (this.sanitizeArgs(args)){
+            SpringApplication.run(MicroservicioSpringApplication.class, args);
+        }
+
+    }
+    protected Boolean sanitizeArgs(String[] args){
+        return true;
     }
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
