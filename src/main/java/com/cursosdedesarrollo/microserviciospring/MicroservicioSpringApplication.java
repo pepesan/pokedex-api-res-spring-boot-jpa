@@ -42,14 +42,14 @@ public class MicroservicioSpringApplication extends SpringBootServletInitializer
             repository.save(pokemon);
         }
         List<Pokemon> databaseList= Lists.newArrayList(repository.findAll());
-        milog.info("Something went wrong: {0} ", databaseList.toString());
+        milog.info("Data list: {0} ", databaseList.toString());
     }
     public static void loadSampleData(PokemonRepository pokemonRepository){
         Pokemon p = new Pokemon();
         p.setName("Squirtle");
         pokemonRepository.save(p);
         List<Pokemon> databaseList= Lists.newArrayList(pokemonRepository.findAll());
-        milog.info(databaseList.toString());
+        milog.info("Data list: {0} ",databaseList.toString());
     }
 
     @Bean
