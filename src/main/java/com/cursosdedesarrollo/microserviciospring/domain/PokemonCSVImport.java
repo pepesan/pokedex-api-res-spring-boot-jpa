@@ -13,10 +13,6 @@ public class PokemonCSVImport {
 
     public List<Pokemon> importCSV(String filePath){
         List<Pokemon> list = new LinkedList<>();
-        String csvFile = filePath;
-        BufferedReader br = null;
-        String line = "";
-        String cvsSplitBy = ",";
         try {
             CsvSchema bootstrapSchema = CsvSchema.emptySchema().withHeader();
             CsvMapper mapper = new CsvMapper();
@@ -25,18 +21,8 @@ public class PokemonCSVImport {
                     mapper.readerWithSchemaFor(Pokemon.class).with(bootstrapSchema).readValues(is);
             list=readValues.readAll();
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            if (br != null) {
-                try {
-                    br.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
         }
         return list;
     }
