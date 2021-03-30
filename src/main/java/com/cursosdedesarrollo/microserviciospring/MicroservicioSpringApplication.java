@@ -17,13 +17,13 @@ import java.util.List;
 public class MicroservicioSpringApplication extends SpringBootServletInitializer {
 
     public void main(String[] args) {
-        if (this.sanitizeArgs(args)){
+        if (Boolean.TRUE.equals(this.sanitizeArgs(args))){
             SpringApplication.run(MicroservicioSpringApplication.class, args);
         }
 
     }
     protected Boolean sanitizeArgs(String[] args){
-        return true;
+        return args.length>0;
     }
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
