@@ -19,13 +19,10 @@ import java.util.List;
 public class MicroservicioSpringApplication extends SpringBootServletInitializer {
 
     static Logger milog = LoggerFactory.getLogger(MicroservicioSpringApplication.class);
-    public void main(String[] args) {
-        if (Boolean.TRUE.equals(this.sanitizeArgs(args))){
-            SpringApplication.run(MicroservicioSpringApplication.class, args);
-        }
-
+    public static void main(String[] args) {
+        SpringApplication.run(MicroservicioSpringApplication.class, args);
     }
-    protected Boolean sanitizeArgs(String[] args){
+    protected static Boolean sanitizeArgs(String[] args){
         return args.length>0;
     }
     @Override
