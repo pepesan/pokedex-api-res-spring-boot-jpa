@@ -14,7 +14,6 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.context.annotation.Bean;
 
 import java.util.List;
-import java.util.logging.Level;
 
 @SpringBootApplication
 public class MicroservicioSpringApplication extends SpringBootServletInitializer {
