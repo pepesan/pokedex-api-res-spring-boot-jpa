@@ -18,7 +18,7 @@ import java.util.List;
 @SpringBootApplication
 public class MicroservicioSpringApplication extends SpringBootServletInitializer {
 
-    static Logger logger = LoggerFactory.getLogger(MicroservicioSpringApplication.class);
+    static Logger milog = LoggerFactory.getLogger(MicroservicioSpringApplication.class);
     public void main(String[] args) {
         if (Boolean.TRUE.equals(this.sanitizeArgs(args))){
             SpringApplication.run(MicroservicioSpringApplication.class, args);
@@ -40,14 +40,14 @@ public class MicroservicioSpringApplication extends SpringBootServletInitializer
             repository.save(pokemon);
         }
         List<Pokemon> databaseList= Lists.newArrayList(repository.findAll());
-        logger.info(databaseList.toString());
+        milog.info(databaseList.toString());
     }
     public static void loadSampleData(PokemonRepository pokemonRepository){
         Pokemon p = new Pokemon();
         p.setName("Squirtle");
         pokemonRepository.save(p);
         List<Pokemon> databaseList= Lists.newArrayList(pokemonRepository.findAll());
-        logger.info(databaseList.toString());
+        milog.info(databaseList.toString());
     }
 
     @Bean
