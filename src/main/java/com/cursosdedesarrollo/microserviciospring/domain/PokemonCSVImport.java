@@ -3,6 +3,8 @@ package com.cursosdedesarrollo.microserviciospring.domain;
 import com.fasterxml.jackson.databind.MappingIterator;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
 
 import java.io.*;
@@ -10,7 +12,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class PokemonCSVImport {
-
+    Logger logger = LoggerFactory.getLogger(PokemonCSVImport.class);
     public List<Pokemon> importCSV(String filePath){
         List<Pokemon> list = new LinkedList<>();
         try {
@@ -22,7 +24,7 @@ public class PokemonCSVImport {
             list=readValues.readAll();
 
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
         return list;
     }
