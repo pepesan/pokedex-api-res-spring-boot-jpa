@@ -6,6 +6,7 @@ import com.cursosdedesarrollo.microserviciospring.repository.PokemonRepository;
 import com.google.common.collect.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.Marker;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,6 +15,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.context.annotation.Bean;
 
 import java.util.List;
+import java.util.logging.Level;
 
 @SpringBootApplication
 public class MicroservicioSpringApplication extends SpringBootServletInitializer {
@@ -40,7 +42,7 @@ public class MicroservicioSpringApplication extends SpringBootServletInitializer
             repository.save(pokemon);
         }
         List<Pokemon> databaseList= Lists.newArrayList(repository.findAll());
-        milog.info(databaseList.toString());
+        milog.info("Something went wrong: {0} ", databaseList.toString());
     }
     public static void loadSampleData(PokemonRepository pokemonRepository){
         Pokemon p = new Pokemon();
