@@ -1,7 +1,5 @@
 package com.cursosdedesarrollo.microserviciospring.domain;
 
-import org.hibernate.annotations.GeneratorType;
-
 import javax.persistence.*;
 
 @Entity
