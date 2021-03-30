@@ -4,6 +4,9 @@ import com.cursosdedesarrollo.microserviciospring.domain.Pokemon;
 import com.cursosdedesarrollo.microserviciospring.domain.PokemonCSVImport;
 import com.cursosdedesarrollo.microserviciospring.repository.PokemonRepository;
 import com.google.common.collect.Lists;
+import org.aspectj.bridge.MessageUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,6 +19,7 @@ import java.util.List;
 @SpringBootApplication
 public class MicroservicioSpringApplication extends SpringBootServletInitializer {
 
+    static Logger logger = LoggerFactory.getLogger(MicroservicioSpringApplication.class);
     public void main(String[] args) {
         if (Boolean.TRUE.equals(this.sanitizeArgs(args))){
             SpringApplication.run(MicroservicioSpringApplication.class, args);
@@ -37,19 +41,19 @@ public class MicroservicioSpringApplication extends SpringBootServletInitializer
             repository.save(pokemon);
         }
         List<Pokemon> databaseList= Lists.newArrayList(repository.findAll());
-        System.out.println(databaseList);
+        logger.info(String.valueOf(databaseList));
     }
     public static void loadSampleData(PokemonRepository pokemonRepository){
         Pokemon p = new Pokemon();
         p.setName("Squirtle");
         pokemonRepository.save(p);
         List<Pokemon> databaseList= Lists.newArrayList(pokemonRepository.findAll());
-        System.out.println(databaseList);
+        logger.info(String.valueOf(databaseList));
     }
 
     @Bean
     public CommandLineRunner demo(PokemonRepository pokemonRepository) {
-        return (args) -> {
+        return args -> {
             loadCSVData(pokemonRepository);
         };
     }
