@@ -12,7 +12,7 @@ pipeline { // define la pipeline
          stage('Build') { // fase de construcción
              steps { // pasos
                 git 'https://github.com/pepesan/pokedex-api-res-spring-boot-jpa.git'
-                sh "mvn -Dmaven.test.failure.ignore=true clean compile"
+                sh "mvn -Dmaven.test.failure.ignore=true clean compile install"
                 sh "docker build -t $DOCKER_IMAGE_NAME:latest ."
                 sh "docker build -t $DOCKER_IMAGE_NAME:$BUILD_NUMBER ."
                 sh "echo $BUILD_NUMBER $DOCKERHUB_CREDS $DOCKERHUB_CREDS_USR $DOCKERHUB_CREDS_PSW"
