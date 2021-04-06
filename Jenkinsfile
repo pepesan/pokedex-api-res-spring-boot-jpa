@@ -47,11 +47,7 @@ pipeline { // define la pipeline
         }
         // Documento proceso de producción
         stage("production"){
-            when {
-                branch 'production'
-            }
             steps{
-                sh "git pull . production"
                 sh "echo production"
             }
         }
