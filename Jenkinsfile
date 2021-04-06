@@ -17,6 +17,7 @@ pipeline { // define la pipeline
                 //sh "mvn -Dmaven.test.failure.ignore=true clean compile"
                 //sh "./create_docker_image.sh"
                 sh "echo $BUILD_NUMBER $DOCKERHUB_CREDS $DOCKERHUB_CREDS_USR $DOCKERHUB_CREDS_PSW"
+                sh "docker login -u $DOCKERHUB_CREDS_USR -p $DOCKERHUB_CREDS_PSW"
              }
          }
          /*
