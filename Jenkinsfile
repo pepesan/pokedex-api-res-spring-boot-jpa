@@ -23,6 +23,9 @@ pipeline { // define la pipeline
                             sh "docker login -u $DOCKERHUB_CREDS_USR -p $DOCKERHUB_CREDS_PSW"
                             sh "docker push $DOCKER_IMAGE_NAME:$BUILD_NUMBER"
                             sh "docker push $DOCKER_IMAGE_NAME:latest"
+                            sh "docker-compose up -d"
+                            sh "docker-compose down"
+
             }
          }
          /*
