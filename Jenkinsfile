@@ -28,6 +28,30 @@ pipeline { // define la pipeline
 
             }
          }
+         stage("development"){
+            when {
+                branch 'development'
+            }
+            steps{
+                sh "echo development"
+            }
+         }
+         stage("staging"){
+            when {
+                branch 'staging'
+            }
+            steps{
+                sh "echo staging"
+            }
+        }
+        stage("production"){
+            when {
+                branch 'production'
+            }
+            steps{
+                sh "echo production"
+            }
+        }
          /*
          stage('Test') {// fase de construcción
              steps {// pasos
