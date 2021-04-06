@@ -1,7 +1,6 @@
 pipeline { // define la pipeline
     environment {
-        registry = "pepesan/pokedex-api-res-spring-boot-jpa"
-        registryCredential = 'dockerhub'
+        DOCKER_IMAGE_NAME = "pepesan/pokedex-microservice"
         DOCKERHUB_CREDS = credentials('dockerhub')
     }
     agent any // equipo a seleccionar para ejecutar los steps
@@ -13,13 +12,19 @@ pipeline { // define la pipeline
          stage('Build') { // fase de construcción
              steps { // pasos
                 git 'https://github.com/pepesan/pokedex-api-res-spring-boot-jpa.git'
-                // Run Maven on a Unix agent.
-                //sh "mvn -Dmaven.test.failure.ignore=true clean compile"
-                //sh "./create_docker_image.sh"
-                sh "echo $BUILD_NUMBER $DOCKERHUB_CREDS $DOCKERHUB_CREDS_USR $DOCKERHUB_CREDS_PSW"
-                sh "docker login -u $DOCKERHUB_CREDS_USR -p $DOCKERHUB_CREDS_PSW"
+                sh "mvn -Dmaven.test.failure.ignore=true clean compile"
              }
          }
+         stage('Build image') { // fase de construcción de imagen
+                      steps { // pasos
+                         sh "docker build -t $DOCKER_IMAGE_NAME:latest ."
+                         sh "docker build -t $DOCKER_IMAGE_NAME:$BUILD_NUMBER ."
+                         sh "echo $BUILD_NUMBER $DOCKERHUB_CREDS $DOCKERHUB_CREDS_USR $DOCKERHUB_CREDS_PSW"
+                         sh "docker login -u $DOCKERHUB_CREDS_USR -p $DOCKERHUB_CREDS_PSW"
+                         sh "docker push $DOCKER_IMAGE_NAME:$BUILD_NUMBER"
+                         sh "docker push $DOCKER_IMAGE_NAME:latest"
+                      }
+                  }
          /*
          stage('Test') {// fase de construcción
              steps {// pasos
