@@ -17,14 +17,15 @@ pipeline { // define la pipeline
          }
          stage("build Docker image"){
             steps{
-                            sh "docker build -t $DOCKER_IMAGE_NAME:latest ."
-                            sh "docker build -t $DOCKER_IMAGE_NAME:$BUILD_NUMBER ."
-                            sh "echo $BUILD_NUMBER $DOCKERHUB_CREDS $DOCKERHUB_CREDS_USR $DOCKERHUB_CREDS_PSW"
-                            sh "docker login -u $DOCKERHUB_CREDS_USR -p $DOCKERHUB_CREDS_PSW"
-                            sh "docker push $DOCKER_IMAGE_NAME:$BUILD_NUMBER"
-                            sh "docker push $DOCKER_IMAGE_NAME:latest"
-                            sh "docker-compose up -d"
-                            sh "docker-compose down"
+                            sh "echo $BUILD_NUMBER"
+                            //sh "docker build -t $DOCKER_IMAGE_NAME:latest ."
+                            //sh "docker build -t $DOCKER_IMAGE_NAME:$BUILD_NUMBER ."
+                            //sh "echo $BUILD_NUMBER $DOCKERHUB_CREDS $DOCKERHUB_CREDS_USR $DOCKERHUB_CREDS_PSW"
+                            //sh "docker login -u $DOCKERHUB_CREDS_USR -p $DOCKERHUB_CREDS_PSW"
+                            //sh "docker push $DOCKER_IMAGE_NAME:$BUILD_NUMBER"
+                            //sh "docker push $DOCKER_IMAGE_NAME:latest"
+                            //sh "docker-compose up -d"
+                            //sh "docker-compose down"
 
             }
          }
@@ -44,11 +45,13 @@ pipeline { // define la pipeline
                 sh "echo staging"
             }
         }
+        // Documento proceso de producción
         stage("production"){
             when {
                 branch 'production'
             }
             steps{
+                sh "git pull . production"
                 sh "echo production"
             }
         }
