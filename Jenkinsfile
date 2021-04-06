@@ -16,7 +16,7 @@ pipeline { // define la pipeline
                 // Run Maven on a Unix agent.
                 //sh "mvn -Dmaven.test.failure.ignore=true clean compile"
                 //sh "./create_docker_image.sh"
-                sh "echo $BUILD_NUMBER $DOCKERHUB_CREDS_USR $DOCKERHUB_CREDS_PSW"
+                sh "echo $BUILD_NUMBER $DOCKERHUB_CREDS $DOCKERHUB_CREDS_USR $DOCKERHUB_CREDS_PSW"
              }
          }
          /*
