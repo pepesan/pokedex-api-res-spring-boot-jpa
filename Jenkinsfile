@@ -2,6 +2,7 @@ pipeline { // define la pipeline
     environment {
         registry = "pepesan/pokedex-api-res-spring-boot-jpa"
         registryCredential = 'dockerhub'
+        DOCKERHUB_CREDS = credentials('dockerhub')
     }
     agent any // equipo a seleccionar para ejecutar los steps
     tools {
@@ -15,7 +16,7 @@ pipeline { // define la pipeline
                 // Run Maven on a Unix agent.
                 //sh "mvn -Dmaven.test.failure.ignore=true clean compile"
                 //sh "./create_docker_image.sh"
-                sh "echo $BUILD_NUMBER"
+                sh "echo $BUILD_NUMBER $DOCKERHUB_CREDS_USR $DOCKERHUB_CREDS_PSW"
              }
          }
          /*
