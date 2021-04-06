@@ -50,6 +50,7 @@ pipeline { // define la pipeline
                 branch 'production'
             }
             steps{
+                sh "git pull . production"
                 sh "echo production"
             }
         }
