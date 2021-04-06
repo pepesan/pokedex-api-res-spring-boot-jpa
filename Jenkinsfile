@@ -44,6 +44,7 @@ pipeline { // define la pipeline
                 sh "echo staging"
             }
         }
+        // Documento proceso de producción
         stage("production"){
             when {
                 branch 'production'
