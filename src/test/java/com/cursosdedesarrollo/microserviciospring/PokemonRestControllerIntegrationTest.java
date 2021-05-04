@@ -21,7 +21,6 @@ import org.springframework.web.context.WebApplicationContext;
 import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = MicroservicioSpringApplication.class)
