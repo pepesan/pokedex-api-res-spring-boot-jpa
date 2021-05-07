@@ -16,7 +16,7 @@ services:
   pokedex:
     container_name: pokedex-api-rest
     restart: always
-    image: pepesan/pokedex-microservice:latest
+    image: pepesan/pokedex-api-rest-dev:1.1
     #build: .
     #build:
     #      context: ./

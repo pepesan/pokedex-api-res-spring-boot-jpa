@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
-docker run -p 5000:8080 -d --name pokedex pepesan/pokedex-microservice:latest
+source .env
+docker run -p 5000:8080 -d --name pokedex pepesan/pokedex-api-rest-dev:1.1
