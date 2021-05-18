@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pokedex-api
+spec:
+  containers:
+    - name: pokedex-api
+      image: pokedex-api-rest

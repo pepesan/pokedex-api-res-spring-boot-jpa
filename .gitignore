@@ -27,3 +27,4 @@ jmeter.log
 /.nb-gradle/
 
 .env
+fichero.log.*
