@@ -98,7 +98,7 @@ public class PokemonRepositoryControllerTest extends PokemonRestControllerIntegr
         System.out.println("Contenido: update: " + content);
     }
     @Test
-    public void deleteProduct() throws Exception {
+    public void deletePokemon() throws Exception {
         String uri = "/pokemons/2";
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.delete(uri)).andReturn();
         int status = mvcResult.getResponse().getStatus();
