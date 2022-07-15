@@ -17,7 +17,6 @@ public class MicroservicioSpringApplicationTests {
 
     @Test
     public void contextLoads() {
-        assertThat(true).isNotNull();
         MicroservicioSpringApplication.loadCSVData(pokemonRepository);
         assertThat(pokemonRepository.count()).isEqualTo(721);
     }

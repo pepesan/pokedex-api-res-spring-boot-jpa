@@ -1,8 +1,10 @@
 package com.cursosdedesarrollo.microserviciospring;
 
 import com.cursosdedesarrollo.microserviciospring.domain.Pokemon;
+
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MvcResult;
@@ -27,7 +29,17 @@ public class PokemonRepositoryControllerTest extends PokemonRestControllerIntegr
         assertEquals(200, status);
         String content = mvcResult.getResponse().getContentAsString();
         System.out.println("Contenido: listado: " + content);
+        JsonParser parser = new JsonParser();
+        JsonObject jsonObject= parser.parse(content).getAsJsonObject();
+        JsonObject embebed = jsonObject.get("_embedded").getAsJsonObject();
+        //System.out.println(embebed);
+        //JsonObject pokemons = jsonObject.get("pokemons").getAsJsonObject();
+        //System.out.println(pokemons);
+        //JsonArray pokemons = jsonObject.get("pokemons").getAsJsonArray();
+        //System.out.println(pokemons);
+
         //Pokemon[] productlist = super.mapFromJson(content, Pokemon[].class);
+        //System.out.println(productlist);
         //assertTrue(productlist.length > 0);
     }
     @Test

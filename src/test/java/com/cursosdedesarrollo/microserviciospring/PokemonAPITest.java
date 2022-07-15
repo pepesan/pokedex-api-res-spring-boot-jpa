@@ -48,7 +48,7 @@ public class PokemonAPITest {
     private MockMvc mockMvc;
 
     @Test
-    public void shouldReturnBulbasaur() throws Exception {
+    public void shouldReturnIvysaur() throws Exception {
         this.mockMvc.perform(get("/pokemons")).andDo(print()).andExpect(status().isOk())
                 .andExpect(content().string(containsString("Ivysaur")));
 
@@ -57,8 +57,8 @@ public class PokemonAPITest {
     @Test
     public void testListOfPokemon() throws Exception{
         final ResultActions result = this.mockMvc.perform(get("/pokemons")).andExpect(status().isOk());
-        result.andExpect(jsonPath("_embedded.pokemons[0].name", Matchers.is("Ivysaur")));
-        //result.andExpect(jsonPath("_embedded.pokemons[0].name", is("Bulbasaur")));
+        result.andExpect(jsonPath("_embedded.pokemons[1].name", Matchers.is("Ivysaur")));
+        result.andExpect(jsonPath("_embedded.pokemons[0].name", Matchers.is("Bulbasaur")));
     }
     @Autowired private ObjectMapper mapper;
     @Test
@@ -69,21 +69,21 @@ public class PokemonAPITest {
                 this.mockMvc.perform(
                         post("/pokemons")
                         .content(mapper.writeValueAsBytes(pokemon))
-                        .contentType(MediaType.APPLICATION_JSON_UTF8));
+                        .contentType(MediaType.APPLICATION_JSON_VALUE));
         result.andDo(print()).andExpect(status().isCreated());
 
         //result.andDo(print()).andExpect(jsonPath("name", Matchers.is("Pokemon")));
         //result.andExpect(jsonPath("_embedded.pokemons[0].name", is("Bulbasaur")));
     }
-    /*
+
     @Test
     public void testGetPokemonFromId() throws Exception{
         final ResultActions result = this.mockMvc.perform(get("/pokemons/1")).andExpect(status().isOk());
-        //result.andDo(print());
+        result.andDo(print());
         result.andExpect(jsonPath("name", Matchers.is("Bulbasaur")));
     }
 
-     */
+
     @Test
     public void testUpdatePokemon() throws Exception{
         Pokemon pokemon = new Pokemon();
@@ -93,7 +93,7 @@ public class PokemonAPITest {
                 this.mockMvc.perform(
                         put("/pokemons/1")
                                 .content(mapper.writeValueAsBytes(pokemon))
-                                .contentType(MediaType.APPLICATION_JSON_UTF8));
+                                .contentType(MediaType.APPLICATION_JSON_VALUE));
         result.andDo(print()).andExpect(status().is2xxSuccessful());
 
         //result.andDo(print()).andExpect(jsonPath("name", Matchers.is("Pokemon")));
@@ -101,7 +101,8 @@ public class PokemonAPITest {
     }
     @Test
     public void testDeletePokemonFromId() throws Exception{
-        final ResultActions result = this.mockMvc.perform(delete("/pokemons/1")).andExpect(status().is2xxSuccessful());
+        final ResultActions result = this.mockMvc.perform(delete("/pokemons/1"))
+                .andExpect(status().is2xxSuccessful());
         result.andDo(print());
         //result.andExpect(jsonPath("name", Matchers.is("Bulbasaur")));
     }

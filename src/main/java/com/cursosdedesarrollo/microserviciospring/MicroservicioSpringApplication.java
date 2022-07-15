@@ -4,6 +4,8 @@ import com.cursosdedesarrollo.microserviciospring.domain.Pokemon;
 import com.cursosdedesarrollo.microserviciospring.domain.PokemonCSVImport;
 import com.cursosdedesarrollo.microserviciospring.repository.PokemonRepository;
 import com.google.common.collect.Lists;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Info;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -16,6 +18,7 @@ import org.springframework.context.annotation.Bean;
 import java.util.List;
 
 @SpringBootApplication
+@OpenAPIDefinition(info = @Info(title = "Employees API", version = "2.0", description = "Employees Information"))
 public class MicroservicioSpringApplication extends SpringBootServletInitializer {
 
     static Logger milog = LoggerFactory.getLogger(MicroservicioSpringApplication.class);

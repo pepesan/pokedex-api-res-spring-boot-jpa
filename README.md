@@ -15,7 +15,8 @@ mvn spring-boot:run
 # ENDPoint Images
 http://localhost:8080/images/pokemon/{id}.png
 http://localhost:8080/images/pokemon/1.png](http://localhost:8080/images/pokemon/1.png)
-
+# Accede a la documentación de los API's: 
+[http://localhost:8080/swagger-ui.html]
 # Montaje de docker compose
 docker-compose up -d
  
