@@ -18,7 +18,7 @@ import org.springframework.context.annotation.Bean;
 import java.util.List;
 
 @SpringBootApplication
-@OpenAPIDefinition(info = @Info(title = "Employees API", version = "2.0", description = "Employees Information"))
+@OpenAPIDefinition(info = @Info(title = "Pokemon API", version = "2.0", description = "Pokedex API Demo"))
 public class MicroservicioSpringApplication extends SpringBootServletInitializer {
 
     static Logger milog = LoggerFactory.getLogger(MicroservicioSpringApplication.class);
