@@ -1,13 +1,15 @@
 pipeline { // define la pipeline
     environment {
         DOCKER_IMAGE_NAME = "pepesan/pokedex-microservice"
-        DOCKERHUB_CREDS = credentials('dockerhub')
+        // DOCKERHUB_CREDS = credentials('dockerhub')
     }
     agent any // equipo a seleccionar para ejecutar los steps
+    /*
     tools {
              // instala la versión de maven "3.6.1" y añadela al path.
              maven "3.6.1"
     }
+    */
     stages { // definición de fases
          stage('Build') { // fase de construcción
              steps { // pasos
