@@ -29,4 +29,4 @@ COPY --from=build /app/${JAR_FILE} app.jar
 EXPOSE 8080
 
 # Define el punto de entrada para ejecutar la aplicación
-ENTRYPOINT ["java","-jar","/app.jar"]
+ENTRYPOINT ["java", "-Xmx256m", "-Xms256m", "-jar", "/app.jar"]
